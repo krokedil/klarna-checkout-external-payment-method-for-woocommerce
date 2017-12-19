@@ -21,19 +21,19 @@ function kcoepm_form_fields( $settings ) {
 		'title'       => __( 'Name', 'kco-epm-wc' ),
 		'type'        => 'text',
 		'description' => __( 'Title for PayPal payment method. This controls the title which the user sees in the checkout form.', 'kco-epm-wc' ),
-		'default'     => __( 'PayPal', 'kco-epm-wc' )
+		'default'     => __( 'PayPal', 'kco-epm-wc' ),
 	);
 	$settings['epm_paypal_description']    = array(
 		'title'       => __( 'Description', 'kco-epm-wc' ),
 		'type'        => 'textarea',
 		'description' => __( 'Description for PayPal payment method. This controls the description which the user sees in the checkout form.', 'kco-epm-wc' ),
-		'default'     => ''
+		'default'     => '',
 	);
 	$settings['epm_paypal_img_url']        = array(
 		'title'       => __( 'Image url', 'kco-epm-wc' ),
 		'type'        => 'text',
 		'description' => __( 'The url to the PayPal payment Icon.', 'kco-epm-wc' ),
-		'default'     => 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png'
+		'default'     => 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png',
 	);
 
 	return $settings;
