@@ -75,6 +75,8 @@ add_action( 'kco_wc_before_submit', 'kcoepm_payment_method' );
 function kcoepm_payment_method() {
 	if ( isset ( $_GET['kco-external-payment'] ) && 'paypal' == $_GET['kco-external-payment'] ) { ?>
         $('input#payment_method_paypal').prop('checked', true);
+	// Check terms and conditions to prevent error.
+	$('input#legal').prop('checked', true);
 	<?php }
 }
 
