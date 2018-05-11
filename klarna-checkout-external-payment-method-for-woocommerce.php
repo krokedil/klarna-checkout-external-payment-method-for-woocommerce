@@ -35,6 +35,12 @@ function kcoepm_form_fields( $settings ) {
 		'description' => __( 'The url to the PayPal payment Icon.', 'kco-epm-wc' ),
 		'default'     => 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png',
 	);
+	$settings['epm_paypal_disable_button']        = array(
+		'title'       => __( 'Disable other gateway button', 'kco-epm-wc' ),
+		'type'        => 'checkbox',
+		'description' => __( 'Disables the "Select another Payment method" button on the Klarna Checkout.', 'kco-epm-wc' ),
+		'default'     => 'no',
+	);
 
 	return $settings;
 }
@@ -81,4 +87,13 @@ function kcoepm_retrieve_order( $klarna_order ) {
 	}
 
 	return $klarna_order;
+}
+
+add_action( 'init', 'kcoepm_remove_other_gateway_button' );
+function kcoepm_remove_other_gateway_button() {
+	$kco_settings   = get_option( 'woocommerce_kco_settings' );
+	$disable_button = isset( $kco_settings['epm_paypal_disable_button'] ) ? $kco_settings['epm_paypal_disable_button'] : 'no' ;
+	if ( 'yes' === $disable_button ) {
+		remove_action( 'kco_wc_after_order_review', 'kco_wc_show_another_gateway_button', 20 );
+	}
 }
