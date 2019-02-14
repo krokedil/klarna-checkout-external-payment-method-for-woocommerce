@@ -18,7 +18,7 @@ Below are some items to check if PayPal isn't working as expected in the Woo sto
 Read more about External Payment Methods in KCO v3 here - https://developers.klarna.com/en/se/kco-v3/checkout/external-payment-methods/.
 
 ## Changelog
-**2019.02.14  - version 2.6.0**
+**2019.02.14  - version 1.1.0**
 * Tweak         - Removed kcoepm_retrieve_order() function. Sine v1.8.0 of KCO plugin, request to correct API is handled by the main plugin for external payment methods if kco-external-payment exist in URL (in redirect to confirmatioin page).
 
 **Version 1.0**
