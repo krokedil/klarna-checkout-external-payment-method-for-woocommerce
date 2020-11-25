@@ -18,6 +18,10 @@ Below are some items to check if PayPal isn't working as expected in the Woo sto
 
 Read more about External Payment Methods in KCO v3 here - https://developers.klarna.com/en/se/kco-v3/checkout/external-payment-methods/.
 
+Documentation
+
+FAQ and documentation can be found here - https://docs.krokedil.com/article/286-klarna-checkout-external-payment-method/.
+
 ## Changelog
 **2020.06.11  - version 2.0.0**
 * Tweak         - Updated to work better with KCO v2.x. This version is not compatible with KCO v1.x.
