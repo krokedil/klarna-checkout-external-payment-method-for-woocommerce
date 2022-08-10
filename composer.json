@@ -1,0 +1,6 @@
+{
+  "name": "sail-agency/woocommerce-klarna-checkout-external-payment-paypal",
+  "type": "wordpress-plugin",
+  "description": "Klarna Checkout PayPal Payment",
+  "version": "2.1.1"
+}
