@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Klarna Checkout (V3) External Payment Method for WooCommerce
+Plugin Name: Klarna Checkout PayPal Payment
 Plugin URI: http://krokedil.com
 Description: Adds PayPal as an extra payment method in Klarna Checkout iframe. Works with V3 of Klarna Checkout
-Version: 2.1.0
-Author: Krokedil
+Version: 2.1.1
+Author: Krokedil + Sail AS
 Author URI: http://krokedil.com
 */
 
@@ -16,12 +16,6 @@ function kcoepm_form_fields( $settings ) {
 	$settings['epm_paypal_settings_title'] = array(
 		'title' => __( 'External Payment Method - PayPal', 'kco-epm-wc' ),
 		'type'  => 'title',
-	);
-	$settings['epm_paypal_name']           = array(
-		'title'       => __( 'Name', 'kco-epm-wc' ),
-		'type'        => 'text',
-		'description' => __( 'Title for PayPal payment method. This controls the title which the user sees in the checkout form.', 'kco-epm-wc' ),
-		'default'     => __( 'PayPal', 'kco-epm-wc' ),
 	);
 	$settings['epm_paypal_description']    = array(
 		'title'       => __( 'Description', 'kco-epm-wc' ),
@@ -54,13 +48,12 @@ function kcoepm_create_order_paypal( $create ) {
 	$confirmation_url = $merchant_urls['confirmation'];
 
 	$kco_settings = get_option( 'woocommerce_kco_settings' );
-	$name         = isset( $kco_settings['epm_paypal_name'] ) ? $kco_settings['epm_paypal_name'] : '';
 	$image_url    = isset( $kco_settings['epm_paypal_img_url'] ) ? $kco_settings['epm_paypal_img_url'] : '';
 	$description  = isset( $kco_settings['epm_paypal_description'] ) ? $kco_settings['epm_paypal_description'] : '';
 
 	$klarna_external_payment = array(
-		'name'         => $name,
-		'redirect_url' => add_query_arg( 'kco-external-payment', 'paypal', $confirmation_url ),
+		'name'         => 'PayPal',
+		'redirect_url' => add_query_arg( 'kco-external-payment', 'ppcp-gateway', $confirmation_url ),
 		'image_url'    => $image_url,
 		'description'  => $description,
 	);
@@ -69,18 +62,6 @@ function kcoepm_create_order_paypal( $create ) {
 	$create['external_payment_methods'] = $klarna_external_payment;
 
 	return $create;
-}
-
-add_action( 'kco_wc_before_submit', 'kcoepm_payment_method' );
-function kcoepm_payment_method() {
-	if ( isset( $_GET['kco-external-payment'] ) && 'paypal' == $_GET['kco-external-payment'] ) { ?>
-		
-		$('input#payment_method_paypal').prop('checked', true);
-		// Check terms and conditions to prevent error.
-		$('input#legal').prop('checked', true);
-		
-		<?php
-	}
 }
 
 add_action( 'init', 'kcoepm_remove_other_gateway_button' );
