@@ -53,7 +53,7 @@ function kcoepm_create_order_paypal( $create ) {
 
 	$klarna_external_payment = array(
 		'name'         => 'PayPal',
-		'redirect_url' => add_query_arg( 'kco-external-payment', 'ppcp-gateway', $confirmation_url ),
+		'redirect_url' => add_query_arg( 'kco-external-payment', 'paypal', $confirmation_url ),
 		'image_url'    => $image_url,
 		'description'  => $description,
 	);
