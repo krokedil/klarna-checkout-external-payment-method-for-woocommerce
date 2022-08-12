@@ -3,7 +3,7 @@
 Plugin Name: Klarna Checkout PayPal Payment
 Plugin URI: http://krokedil.com
 Description: Adds PayPal as an extra payment method in Klarna Checkout iframe. Works with V3 of Klarna Checkout
-Version: 2.1.1
+Version: 2.1.2
 Author: Krokedil + Sail AS
 Author URI: http://krokedil.com
 */
